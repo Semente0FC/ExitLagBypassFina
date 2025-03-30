@@ -1,17 +1,6 @@
 #import <StoreKit/StoreKit.h>
 #import <Foundation/Foundation.h>
 
-%ctor {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (NSClassFromString(@"SKPaymentQueue")) {
-            NSLog(@"[ExitLagBypassFinal] StoreKit detectado. Hooks serão aplicados.");
-            %init();
-        } else {
-            NSLog(@"[ExitLagBypassFinal] StoreKit NÃO encontrado. Nenhum hook será aplicado.");
-        }
-    });
-}
-
 %hook SKPaymentTransaction
 
 - (SKPaymentTransactionState)transactionState {
@@ -25,6 +14,7 @@
 
 - (void)start {
     NSLog(@"[ExitLagBypassFinal] Interceptado start de SKReceiptRefreshRequest.");
+    %orig;
 }
 
 %end
@@ -50,3 +40,7 @@
 }
 
 %end
+
+%ctor {
+    NSLog(@"[ExitLagBypassFinal] Inicializando tweak...");
+}
