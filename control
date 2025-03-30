@@ -1,0 +1,9 @@
+Package: com.seunome.exitlagbypassfinal
+Name: ExitLagBypassFinal
+Depends: mobilesubstrate
+Version: 1.0
+Architecture: iphoneos-arm
+Description: Fake IAP para o ExitLagMobile usando StoreKit
+Maintainer: Você <email@exemplo.com>
+Author: Você
+Section: Tweaks
